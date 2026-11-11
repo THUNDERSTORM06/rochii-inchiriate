@@ -5,7 +5,7 @@ import DetaliiRochie from './pages/DetaliiRochie.jsx'
 import { StatusuriProvider } from './statusuri.jsx'
 
 // Pagina de administrare (și autentificarea Firebase) se încarcă doar când e deschisă.
-const Admin = lazy(() => import('./pages/Admin.jsx'))
+const Admin = lazy(() => import('./pages/hahaha.jsx'))
 
 export default function App() {
   return (
