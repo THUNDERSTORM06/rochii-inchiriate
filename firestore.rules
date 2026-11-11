@@ -1,0 +1,41 @@
+rules_version = '2';
+
+// Publicare: firebase deploy --only firestore:rules (sau copiere în Firebase Console → Firestore → Rules).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // UID-ul contului de administrator (Authentication → Users).
+    function eAdmin() {
+      return request.auth != null && request.auth.uid == '30IZYUxfpsQnwsEE3vqUElEGaIM2';
+    }
+
+    // Starea rochiilor: oricine o poate citi.
+    // Un vizitator poate doar pune în așteptare o rochie liberă, împreună cu cererea lui.
+    match /status/{rochieId} {
+      allow read: if true;
+      allow create: if eAdmin() || (
+        request.resource.data.keys().hasOnly(['stare', 'creatLa'])
+        && request.resource.data.stare == 'in_asteptare'
+        && request.resource.data.creatLa == request.time
+        && existsAfter(/databases/$(database)/documents/cereri/$(rochieId))
+      );
+      allow update, delete: if eAdmin();
+    }
+
+    // Datele de contact ale clientelor: doar administratorul le poate vedea.
+    match /cereri/{rochieId} {
+      allow create: if eAdmin() || (
+        request.resource.data.keys().hasOnly(['nume', 'telefon', 'dataEveniment', 'creatLa'])
+        && request.resource.data.nume is string
+        && request.resource.data.nume.size() >= 2 && request.resource.data.nume.size() <= 100
+        && request.resource.data.telefon is string
+        && request.resource.data.telefon.size() >= 6 && request.resource.data.telefon.size() <= 20
+        && request.resource.data.dataEveniment is string
+        && request.resource.data.dataEveniment.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && request.resource.data.creatLa == request.time
+        && getAfter(/databases/$(database)/documents/status/$(rochieId)).data.stare == 'in_asteptare'
+      );
+      allow read, update, delete: if eAdmin();
+    }
+  }
+}

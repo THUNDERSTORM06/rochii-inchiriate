@@ -7,7 +7,7 @@ export default function CardRochie({ rochie }) {
     <Link to={`/rochie/${rochie.id}`} className="card">
       <img src={rochie.imagine} alt={rochie.nume} loading="lazy" />
       <div className="card-info">
-        <StatusRochie rochie={rochie} />
+        <StatusRochie id={rochie.id} />
         <h2>{rochie.nume}</h2>
         <p className="detalii-scurte">Mărimea {rochie.marime} · {rochie.culoare}</p>
         <p className="pret">{formatLei(rochie.pretInchiriere)} <small>/ închiriere</small></p>

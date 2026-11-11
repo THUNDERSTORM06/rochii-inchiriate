@@ -1,5 +1,5 @@
-// Catalogul de rochii. Pentru a marca o rochie ca rezervată, setează `rezervata: true`
-// (opțional, completează și `rezervataPanaLa` cu data în format AAAA-LL-ZZ).
+// Catalogul de rochii. Disponibilitatea (liberă / în așteptare / rezervată) se ține în Firebase
+// și se gestionează din pagina de administrare (#/admin).
 
 // Link PayPal.Me – înlocuiește NUMELE_TAU cu numele tău de utilizator PayPal.
 export const PAYPAL_ME = 'https://www.paypal.me/NUMELE_TAU'
@@ -16,7 +16,6 @@ export const rochii = [
     pretInchiriere: 250,
     avans: 100,
     imagine: 'imagini/rochie-1.svg',
-    rezervata: false,
   },
   {
     id: 'rochie-cocktail-bleumarin',
@@ -29,8 +28,6 @@ export const rochii = [
     pretInchiriere: 180,
     avans: 70,
     imagine: 'imagini/rochie-2.svg',
-    rezervata: true,
-    rezervataPanaLa: '2026-11-30',
   },
   {
     id: 'rochie-mireasa-ivoire',
@@ -43,7 +40,6 @@ export const rochii = [
     pretInchiriere: 900,
     avans: 300,
     imagine: 'imagini/rochie-3.svg',
-    rezervata: false,
   },
   {
     id: 'rochie-verde-smarald',
@@ -56,7 +52,6 @@ export const rochii = [
     pretInchiriere: 220,
     avans: 80,
     imagine: 'imagini/rochie-4.svg',
-    rezervata: false,
   },
   {
     id: 'rochie-lavanda-domnisoara-onoare',
@@ -69,8 +64,6 @@ export const rochii = [
     pretInchiriere: 150,
     avans: 50,
     imagine: 'imagini/rochie-5.svg',
-    rezervata: true,
-    rezervataPanaLa: '2026-12-15',
   },
   {
     id: 'rochie-rosie-paiete',
@@ -83,7 +76,6 @@ export const rochii = [
     pretInchiriere: 200,
     avans: 80,
     imagine: 'imagini/rochie-6.svg',
-    rezervata: false,
   },
 ]
 

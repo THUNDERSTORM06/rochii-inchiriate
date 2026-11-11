@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import CardRochie from '../components/CardRochie.jsx'
 import { rochii } from '../data/rochii.js'
+import { stareRochie, useStatusuri } from '../statusuri.jsx'
 
 const filtre = {
   toate: { eticheta: 'Toate', test: () => true },
-  disponibile: { eticheta: 'Disponibile', test: (r) => !r.rezervata },
-  rezervate: { eticheta: 'Rezervate', test: (r) => r.rezervata },
+  disponibile: { eticheta: 'Disponibile', test: (stare) => stare === 'disponibila' },
+  rezervate: { eticheta: 'Rezervate', test: (stare) => stare !== 'disponibila' },
 }
 
 export default function Catalog() {
   const [filtru, setFiltru] = useState('toate')
-  const vizibile = rochii.filter(filtre[filtru].test)
+  const { statusuri } = useStatusuri()
+  const vizibile = rochii.filter((r) => filtre[filtru].test(stareRochie(statusuri, r.id)))
 
   return (
     <>

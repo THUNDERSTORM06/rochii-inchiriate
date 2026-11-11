@@ -83,6 +83,7 @@ a { color: inherit; }
 }
 .status.disponibila { background: #e3f3e9; color: var(--verde); }
 .status.rezervata { background: #f8e2e2; color: var(--rosu); }
+.status.asteptare { background: #fbf0d9; color: #9a6a12; }
 
 .inapoi { display: inline-block; margin-bottom: 1rem; color: var(--estompat); text-decoration: none; }
 .detalii-grila {
@@ -113,6 +114,60 @@ a { color: inherit; }
 }
 .buton-avans:hover { filter: brightness(0.95); }
 .nota { color: var(--estompat); font-size: 0.9rem; }
+.eroare { color: var(--rosu); font-size: 0.9rem; margin: 0; }
+
+.buton, .buton-secundar {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.buton { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+.buton:disabled { opacity: 0.6; cursor: wait; }
+.buton-secundar { background: var(--card); color: var(--text); border: 1px solid var(--bordura); }
+
+.formular, .confirmare {
+  display: grid;
+  gap: 0.9rem;
+  background: var(--card);
+  border: 1px solid var(--bordura);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.formular h2, .confirmare h2 { margin: 0; font-size: 1.2rem; }
+.confirmare p { margin: 0; }
+.confirmare .buton-avans { justify-self: start; }
+.formular label { display: grid; gap: 0.3rem; font-size: 0.9rem; color: var(--estompat); }
+.formular input {
+  font: inherit;
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--bordura);
+  border-radius: 8px;
+  background: var(--fundal);
+}
+.formular-admin { max-width: 380px; margin: 0 auto; }
+.formular-admin h1 { margin: 0; font-family: Georgia, serif; }
+
+.lista-admin { display: grid; gap: 0.75rem; }
+.rand-admin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--card);
+  border: 1px solid var(--bordura);
+  border-left: 4px solid var(--verde);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+.rand-admin.in_asteptare { border-left-color: #d9a032; }
+.rand-admin.rezervata { border-left-color: var(--rosu); }
+.rand-admin .nota { margin-top: 0.2rem; }
+.cerere { margin-top: 0.4rem; font-size: 0.9rem; }
+.butoane-admin { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
 .subsol {
   text-align: center;
